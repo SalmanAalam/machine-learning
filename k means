@@ -1,0 +1,28 @@
+Certainly:
+
+```matlab
+% Sample data
+data = [2,3; 3,4; 5,6; 8,7; 10,8; 12,10];
+
+% Initial centroids
+k = 2;
+centroids = datasample(data, k, 'Replace', false);
+
+% Maximum number of iterations
+max_iterations = 100;
+
+for iter = 1:max_iterations
+    % Assign each point to the nearest centroid
+    distances = pdist2(data, centroids);
+    [~, assignments] = min(distances, [], 2);
+    
+    % Update centroids
+    for i = 1:k
+        centroids(i, :) = mean(data(assignments == i, :));
+    end
+end
+
+% Display final assignments and centroids
+disp(assignments);
+disp(centroids);
+```
