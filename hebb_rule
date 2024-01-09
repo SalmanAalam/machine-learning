@@ -1,0 +1,9 @@
+inputs = [1; -1; 1];
+weights = zeros(size(inputs));
+
+for i = 1:length(inputs)
+    weights = weights + inputs(i) * inputs';
+end
+
+test_input = [1; -1; 1];
+output = sign(weights' * test_input);
